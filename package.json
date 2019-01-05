@@ -1,0 +1,36 @@
+{
+  "name": "typescript-mahoeger",
+  "version": "",
+  "description": "",
+  "dependencies": {
+    "http": "0.0.0"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.1.0",
+    "cross-var": "^1.1.0",
+    "lint": "",
+    "npm-run-all": "",
+    "onchange": "^5.2.0",
+    "rimraf": "^2.6.3",
+    "shx": "",
+    "typescript": "^3.2.1",
+    "watch": "^1.0.2"
+  },
+  "config": {
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "scripts": {
+    "build": "npm run clean && tsc && npm run build:configFiles",
+    "build:production": "npm run install:extensions && cross-var rimraf $npm_package_config_outDir/local.settings.json && cross-var copyfiles package.json $npm_package_config_outDir && cross-var cd $npm_package_config_outDir && npm install --production && cd .. && cross-var echo \"\nProduction build is ready in '$npm_package_config_outDir'.\n\"",
+    "build:configFiles": "cross-var copyup \"$npm_package_config_rootDir/**/*.json\" \"$npm_package_config_rootDir/**/*.csproj\" $npm_package_config_outDir",
+    "install:extensions": "npm run build && cross-var func extensions install --prefix $npm_package_config_outDir && cross-var copyup $npm_package_config_outDir/extensions.csproj $npm_package_config_rootDir",
+    "install:extensions:force": "npm run build && cross-var func extensions install --prefix $npm_package_config_outDir --force && cross-var copyup $npm_package_config_outDir/extensions.csproj $npm_package_config_rootDir",
+    "start": "npm run build && npm run start:host & npm run watch",
+    "start:host": "cross-var func host start --prefix $npm_package_config_outDir",
+    "watch": "tsc -w & cross-var onchange \"$npm_package_config_rootDir/**/*.json\" \"$npm_package_config_rootDir/**/*.csproj\" -- npm run build:configFiles",
+    "clean": "cross-var rimraf $npm_package_config_outDir",
+    "test": "echo \"No tests yet...\"",
+    "publish:update": "npm run test && npm run build:production && cross-var echo \"Publishing '$npm_package_config_outDir' content to already deployed function app '$npm_package_name'\" && cross-var func azure functionapp publish $npm_package_name --prefix $npm_package_config_outDir"
+  }
+}

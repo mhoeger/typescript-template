@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",                       /* The root directory of output files.  */
+    "strict": true,
+    "allowJs": true
+  },
+  "include": [
+      "src/**/*"
+  ]
+}
