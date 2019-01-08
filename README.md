@@ -9,6 +9,8 @@ Azure Functions wants to support better TypeScript development. This repo is an 
 - test on Windows
 - Confirm npm run watch is working as expected
 - debug experience?? (VS Code integration) - see https://github.com/Azure/azure-functions-host/issues/3415, which results in https://github.com/Azure/azure-functions-host/issues/3543 
+- remove dependency on `func` for production build?
+  - maybe include dependencies per script
 
 ⬇️ ⬇️ ⬇️  actual README below  ⬇️ ⬇️ ⬇️
 
