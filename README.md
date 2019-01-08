@@ -1,3 +1,17 @@
+# WORK IN PROGRESS: Azure Functions TypeScript Template
+⚠️ Warning: Not yet officially supported by the Azure Functions product group. Please provide feedback :) ⚠️
+
+Azure Functions wants to support better TypeScript development. This repo is an initial prototype for baked-in TypeScript templates you can get with commands like `func init`.
+
+# TODO:
+- are extensions scripts flexible enough with coming bundling changes?
+- @azure/functions as a dev dependency
+- test on Windows
+- Confirm npm run watch is working as expected
+- debug experience?? (VS Code integration) - see https://github.com/Azure/azure-functions-host/issues/3415, which results in https://github.com/Azure/azure-functions-host/issues/3543 
+
+⬇️ ⬇️ ⬇️  actual README below  ⬇️ ⬇️ ⬇️
+
 # Azure Functions ❤️'s TypeScript 
 This template is starting point for creating serverless Azure Functions written in TypeScript. The TypeScript Function app is contained in `src` by default. Build outputs are written to `dist` by default. All code changes should be made inside of `src`. However, code will execute from `dist`.
 
@@ -91,12 +105,3 @@ Deploys updated code to an already deployed Function app. The `name` property in
 If you are getting started with Azure Functions, you can follow this tutorial to [create and deploy your first JavaScript function](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code). We recommend that you use Visual Studio Code and the [Azure Functions extension](https://code.visualstudio.com/tutorials/functions-extension/getting-started).
 
 The [Azure Functions developer guide](https://docs.microsoft.com/azure/azure-functions/functions-reference) and the [JavaScript-specific developer guide](https://docs.microsoft.com/azure/azure-functions/functions-reference-node) are good resources to gain an understanding of more Azure Functions concepts.
-
-
-# TODO:
-- Will extensions commands hold up with bundling changes??
-- @azure/functions as a dev dependency
-- test on Windows
-- Confirm npm run watch is working as expected... why duplicating??
-- debug??
-
