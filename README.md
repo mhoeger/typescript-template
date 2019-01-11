@@ -3,9 +3,10 @@
 
 Azure Functions wants to support better TypeScript development. This repo is an initial prototype for baked-in TypeScript templates you can get with commands like `func init`.
 
+Current functions and dependency on lodash would not be there.
+
 # TODO:
 - are extensions scripts flexible enough with coming bundling changes?
-- @azure/functions as a dev dependency
 - test on Windows
 - Confirm npm run watch is working as expected
 - debug experience?? (VS Code integration) - see https://github.com/Azure/azure-functions-host/issues/3415, which results in https://github.com/Azure/azure-functions-host/issues/3543 
@@ -67,7 +68,7 @@ Your build output directory is defined in `package.json` and `tsconfig.json` as 
 If you change `outDir`, be sure to add the new build output directory to .gitignore.
 
 ### Configure the source directory
-Your source directory is defined in `package.json` and `tsconfig.json`. In `package.json`, it is the value of `rootDir`. In `tsconfig.json`, it is the directory listed under `include`. By default, the directory is `src`.
+Your source directory is defined in `package.json` and `tsconfig.json`. In `package.json`, it is the value of `rootDir`. In `tsconfig.json`, it is the directory listed under `include`. By default, the source directory is `src`.
 
 ## Npm scripts
 #### `npm run build`
@@ -78,6 +79,9 @@ Builds the Function app and its dependencies to the build output folder for depl
 
 #### `npm run build:configFiles`
 Copies the .json and .csproj files needed in the Function app to the build output folder.
+
+#### `npm run build:extensions`
+Generates the appropriate extensions artifacts for the extensions registered in extensions.csproj.
 
 #### `npm run install:extensions`
 Installs extension packages from reading `function.json` files and from reading your `extensions.csproj` file. This command works by running `func extensions install` in the build output folder. Newly detected extensions will automatically be added to `src/extensions.csproj`.

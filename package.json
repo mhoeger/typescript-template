@@ -3,7 +3,8 @@
   "version": "",
   "description": "",
   "dependencies": {
-    "http": "0.0.0"
+    "@types/lodash": "^4.14.119",
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@azure/functions": "1.0.1-beta1",
