@@ -1,7 +1,6 @@
-//import { IFunction, IRequest, IContext } from "azure-functions"
+import { AzureFunction, HttpRequest, Context } from "@azure/functions"
 
-//const run: IFunction = async function (context: IContext, req: IRequest) {
-const run = async function (context: any, req: any) {
+const run: AzureFunction = async function (context: Context, req: HttpRequest) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
     if (req.query.name || (req.body && req.body.name)) {

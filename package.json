@@ -6,24 +6,22 @@
     "http": "0.0.0"
   },
   "devDependencies": {
+    "@azure/functions": "1.0.1-beta1",
     "copyfiles": "^2.1.0",
     "cross-var": "^1.1.0",
-    "lint": "",
-    "npm-run-all": "",
     "onchange": "^5.2.0",
     "rimraf": "^2.6.3",
-    "shx": "",
-    "typescript": "^3.2.1",
-    "watch": "^1.0.2"
+    "typescript": "^3.2.1"
   },
   "config": {
     "outDir": "dist",
     "rootDir": "src"
   },
   "scripts": {
-    "build": "npm run clean && tsc && npm run build:configFiles",
-    "build:production": "npm run install:extensions && cross-var rimraf $npm_package_config_outDir/local.settings.json && cross-var copyfiles package.json $npm_package_config_outDir && cross-var cd $npm_package_config_outDir && npm install --production && cd .. && cross-var echo \"\nProduction build is ready in '$npm_package_config_outDir'.\n\"",
+    "build": "npm run clean && tsc && npm run build:configFiles && npm run build:extensions",
+    "build:production": "npm run build && cross-var rimraf $npm_package_config_outDir/local.settings.json && cross-var copyfiles package.json $npm_package_config_outDir && cross-var cd $npm_package_config_outDir && npm install --production && cd .. && cross-var echo \"\nProduction build is ready in '$npm_package_config_outDir'.\n\"",
     "build:configFiles": "cross-var copyup \"$npm_package_config_rootDir/**/*.json\" \"$npm_package_config_rootDir/**/*.csproj\" $npm_package_config_outDir",
+    "build:extensions": "cross-var dotnet build $npm_package_config_outDir",
     "install:extensions": "npm run build && cross-var func extensions install --prefix $npm_package_config_outDir && cross-var copyup $npm_package_config_outDir/extensions.csproj $npm_package_config_rootDir",
     "install:extensions:force": "npm run build && cross-var func extensions install --prefix $npm_package_config_outDir --force && cross-var copyup $npm_package_config_outDir/extensions.csproj $npm_package_config_rootDir",
     "start": "npm run build && npm run start:host & npm run watch",
