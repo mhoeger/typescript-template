@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",                       /* The root directory of output files.  */
+    "rootDir": "src",
     "strict": true,
     "allowJs": true
   },

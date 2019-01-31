@@ -28,7 +28,7 @@
     "build:extensions": "cross-var func extensions sync --prefix $npm_package_config_azureFunctions_outDir --output bin",
     "install:extensions": "npm run build && cross-var func extensions install --prefix $npm_package_config_azureFunctions_outDir && cross-var copyfiles -u 1 $npm_package_config_azureFunctions_outDir/extensions.csproj $npm_package_config_azureFunctions_rootDir",
     "install:extensions:force": "npm run build && cross-var func extensions install --prefix $npm_package_config_azureFunctions_outDir --force && cross-var copyfiles -u 1 $npm_package_config_azureFunctions_outDir/extensions.csproj $npm_package_config_azureFunctions_rootDir",
-    "start": "npm run build && npm run start:host & npm run watch",
+    "start": "npm run build || npm run start:host & npm run watch",
     "start:host": "cross-var func host start --prefix $npm_package_config_azureFunctions_outDir",
     "watch": "tsc -w & cross-var onchange \"$npm_package_config_azureFunctions_rootDir/**/*.json\" \"$npm_package_config_azureFunctions_rootDir/**/*.csproj\" -- npm run build:configFiles",
     "clean": "cross-var rimraf $npm_package_config_azureFunctions_outDir",
